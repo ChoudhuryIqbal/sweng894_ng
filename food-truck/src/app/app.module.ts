@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CreateAccountComponent } from './pages/create-account/create-account.component';
 import { CreateEventComponent } from './pages/create-event/create-event.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { RestService } from './services/rest.service';
 
 @NgModule({
 	declarations: [
@@ -14,9 +16,10 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 		EditProfileComponent
 	],
 	imports: [
-		BrowserModule
+		BrowserModule,
+		HttpClientModule
 	],
-	providers: [],
+	providers: [RestService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
