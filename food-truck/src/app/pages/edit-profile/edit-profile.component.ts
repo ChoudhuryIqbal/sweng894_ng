@@ -11,5 +11,6 @@ export class EditProfileComponent implements OnInit {
 
 	ngOnInit() {
 	}
+	categories=['Italian', 'American', 'Mexican']
 
 }
