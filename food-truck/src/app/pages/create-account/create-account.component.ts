@@ -19,4 +19,8 @@ export class CreateAccountComponent implements OnInit {
 
 		this.accountService.createAccount(username, password);
 	}
+
+	onSubmit() {
+		console.log('Form submitted!');
+	}
 }
