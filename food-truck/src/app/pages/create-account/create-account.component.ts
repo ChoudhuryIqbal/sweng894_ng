@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../services/account.service';
 
 @Component({
 	selector: 'app-create-account',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./create-account.component.scss']
 })
 export class CreateAccountComponent implements OnInit {
+	constructor(private accountService: AccountService) {}
 
-	constructor() { }
 	ngOnInit() {
 	}
-	categories=['Italian', 'American', 'Mexican']
+
+	// TO DO: Link this to form
+	createAccount() {
+		const username = '';
+		const password = '';
+
+		this.accountService.createAccount(username, password);
+	}
 }
