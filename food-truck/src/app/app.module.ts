@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { RestService } from './services/rest.service';
 import { AccountService } from './services/account.service';
 import { ComponentsModule } from './exports/components.module';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 	declarations: [
