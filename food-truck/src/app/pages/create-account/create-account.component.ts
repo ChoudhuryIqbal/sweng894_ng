@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CreateAccountComponent implements OnInit {
 
 	constructor() { }
-
 	ngOnInit() {
 	}
-
+	categories=['Italian', 'American', 'Mexican']
 }
