@@ -15,7 +15,8 @@ export class AccountService {
     }
 
     createAccount(username: string, password: string) {
-        const newId = this._accounts.length;
+        const newId = this.getNewId();
+        
         const newAccount = new Account(newId, username, password);
 
         this.addAccount(newAccount);
@@ -23,5 +24,9 @@ export class AccountService {
 
     addAccount(newAccount: Account) {
         this._accounts.push(newAccount);
+    }
+
+    getNewId(): number {
+        return this._accounts.length;
     }
 }

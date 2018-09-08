@@ -4,10 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
-import { RestService } from './services/rest.service';
-import { AccountService } from './services/account.service';
 import { ComponentsModule } from './exports/components.module';
 import { AppRoutingModule } from './app-routing.module';
+
+import { RestService } from './services/rest.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
 	declarations: [
@@ -17,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 		BrowserModule,
 		HttpClientModule,
 		ComponentsModule,
-		AppRoutingModule,
+		AppRoutingModule
 	],
 	providers: [RestService, AccountService],
 	bootstrap: [AppComponent]

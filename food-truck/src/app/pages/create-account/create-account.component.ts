@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
 import { AccountService } from '../../services/account.service';
 
 @Component({
@@ -7,20 +10,27 @@ import { AccountService } from '../../services/account.service';
 	styleUrls: ['./create-account.component.scss']
 })
 export class CreateAccountComponent implements OnInit {
-	constructor(private accountService: AccountService) {}
 
-	ngOnInit() {
-	}
+	accountForm = this.formBuilder.group({
+		username: ['', Validators.required],
+		password: ['', Validators.required]
+	})
+
+	constructor(private formBuilder: FormBuilder, private accountService: AccountService) {}
+
+	ngOnInit() {}
 
 	// TO DO: Link this to form
 	createAccount() {
-		const username = '';
-		const password = '';
-
-		this.accountService.createAccount(username, password);
+		
 	}
 
 	onSubmit() {
-		console.log('Form submitted!');
+		const username = this.accountForm.value.username;
+		const password = this.accountForm.value.password;
+
+		this.accountService.createAccount(username, password);
+
+		console.log(this.accountService.accounts);
 	}
 }
