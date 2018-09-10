@@ -14,19 +14,10 @@ export class AccountService {
         return this._accounts;
     }
 
-    createAccount(username: string, password: string) {
-        const newId = this.getNewId();
-        
-        const newAccount = new Account(newId, username, password);
+    createAccount(username: string, password: string, type: string) {
+        const id = this._accounts.length;
+        const newAccount = new Account(id, username, password, type);
 
-        this.addAccount(newAccount);
-    }
-
-    addAccount(newAccount: Account) {
         this._accounts.push(newAccount);
-    }
-
-    getNewId(): number {
-        return this._accounts.length;
     }
 }
