@@ -7,6 +7,10 @@
 <div class="for-bg-im-body">
     <div class="lg-fm-box">
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+     <tr><td><b>Food Truck Discription:</b></td>
+   <td><input type="text" name="r" placeholder="Enter Food Truck Discription"></td></tr>
+        <tr><td><b>Sales Discription:</b></td>
+   <td><input type="text" name="r" placeholder=" Enter Sales Discription"></td></tr>
 	<tr>
     <td><label for="fdate">From-</label></td>
     <td><input type="date" id="from" name="from" size="20" />
@@ -16,8 +20,7 @@
     <td><input type="date" id="to" name="to" size="20" />
    <input id="appt-time" type="time" name="appt-time" value="00:00"></td></tr>
 
-   <tr><td><b>Enter The Description:</b></td>
-   <td><input type="text" name="r" ></td></tr>
+
    <tr><td><b>Enter The Item:</b></td>
    <td><div><div formArrayName="items"
   *ngFor="let item of orderForm.get('items').controls; let i = index;">

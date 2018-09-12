@@ -32,10 +32,6 @@ addItem(): void {
   this.items.push(this.createItem());
 }
 
-onSubmit(form:NgForm ) {
-    this.arr = form.value;
-    console.log(JSON.stringify( this.arr));
-    console.log(JSON.stringify( form.value));
-   }
+
 }
-}
+
