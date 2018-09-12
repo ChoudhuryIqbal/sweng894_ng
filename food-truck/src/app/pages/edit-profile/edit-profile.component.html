@@ -1,5 +1,5 @@
 <h2>Setup Vendor Profile</h2>
-<form>
+<form #vendorProfileForm="ngForm" (ngSubmit)="onSubmit()">
 	<div class="form-group">
 		<label for="name">Name of food truck</label>
 		<input type="text" class="form-control" id="name" required>
@@ -20,5 +20,5 @@
 		<input type="file" class="form-control" id="picture" (change)="onImageUpload($event)">
 	</div>
 
-	<button type="submit" class="btn btn-success">Submit</button>
+	<button type="submit" class="btn btn-success" (click)="createVendorProfile(); vendorProfileForm.reset()" [disabled]="!vendorProfileForm.form.valid">Submit</button>
 </form>
