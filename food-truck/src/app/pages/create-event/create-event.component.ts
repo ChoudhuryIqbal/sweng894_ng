@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-event',
@@ -6,11 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-event.component.css']
 })
 export class CreateEventComponent implements OnInit {
-public items =["Mango","Banana","Pineapple","Strawberry","Kiwi","Grapefruit","Blueberries","Lemons"];
-public dateTimeRange: Date[];
-  constructor() { }
+orderForm: FormGroup;
+items: FormArray;
 
-  ngOnInit() {
-  }
+constructor(private formBuilder: FormBuilder) {}
 
+ngOnInit() {
+  this.orderForm = this.formBuilder.group({
+    customerName: '',
+    email: '',
+    items: this.formBuilder.array([ this.createItem() ])
+  });
+}
+createItem(): FormGroup {
+  return this.formBuilder.group({
+    name: '',
+    description: '',
+    price: ''
+  });
+}
+addItem(): void {
+  this.items = this.orderForm.get('items') as FormArray;
+  this.items.push(this.createItem());
+}
+
+onSubmit(form:NgForm ) {
+    this.arr = form.value;
+    console.log(JSON.stringify( this.arr));
+    console.log(JSON.stringify( form.value));
+   }
+}
 }

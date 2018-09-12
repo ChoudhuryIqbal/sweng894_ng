@@ -1,11 +1,19 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+<h2 align="center">Enter The Event Deatils</h2><br>
+=======
+>>>>>>> 853ceb5456b358d4bb3d4328ac46aea066449dfb
 <h2 align="center">Enter The Event Details</h2><br>
+>>>>>>> 2af62692dcfdafe5d6ea1c15751078c65f78c5e8
 <table  id="table" align="center">
 <div class="for-bg-im-body">
     <div class="lg-fm-box">
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
 	<tr>
     <td><label for="fdate">From-</label></td>
     <td><input type="date" id="from" name="from" size="20" />
@@ -18,7 +26,16 @@
    <tr><td><b>Enter The Description:</b></td>
    <td><input type="text" name="r" ></td></tr>
    <tr><td><b>Enter The Item:</b></td>
-   <td><input type="text" name="r" placeholder="Enter Item's Name">&nbsp;<input type="text" name="r" placeholder="Enter Item's Price"><div class="btn-toolbar clearfix"><a class="btn btn-small inlineIconed" href="" ng-click="addField()" type="button"><em class="k-ico-plus"></em>Add new Field</a></div></td></tr>
+   <td><div><div formArrayName="items"
+  *ngFor="let item of orderForm.get('items').controls; let i = index;">
+  <div [formGroupName]="i">
+    <input formControlName="name" placeholder="Enter Item's name">
+    <input formControlName="price" placeholder="Enter Item's Price">
+  </div>
+
+</div>
+<button (click)="addItem()">Add Row</button>
+</div></td></tr>
 
     <input type="submit" name="submit" value="Submit" class="btn btn-primary btn btn-info" id="submit-id" />
     <input type="reset" name="reset" value="Reset" class="btn " id="button-id" />
