@@ -20,4 +20,11 @@ export class AccountService {
 
         this._accounts.push(newAccount);
     }
+
+    login(username: string, password: string, type: string) {
+        const id = this._accounts.length;
+        const newAccount = new Account(id, username, password, type);
+
+        this._accounts.push(newAccount);
+    }
 }
