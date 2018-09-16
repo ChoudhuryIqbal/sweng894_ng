@@ -4,20 +4,19 @@ import { Account } from "../models/account";
 @Injectable()
 export class AccountService {
 
-    private _accounts: Account[];
+    private _accounts = {};
 
-    constructor() { 
-        this._accounts = [];
-    }
+    constructor() {}
 
-    get accounts(): Account[] {
-        return this._accounts;
-    }
+    createAccount(username: string, password: string, type: string): Boolean {
+        let didCreate = false;
 
-    createAccount(username: string, password: string, type: string) {
-        const id = this._accounts.length;
-        const newAccount = new Account(id, username, password, type);
+        if (!this._accounts[username]) {
+            const newAccount = new Account(username, password, type);
+            this._accounts[username] = newAccount;
+            didCreate = true;
+        }
 
-        this._accounts.push(newAccount);
+        return didCreate;
     }
 }
