@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RestService } from './services/rest.service';
 import { AccountService } from './services/account.service';
-import { VendorProfileService } from './services/vendorProfile.service';
+import { VendorProfileService } from './services/vendor-profile.service';
 
 @NgModule({
 	declarations: [

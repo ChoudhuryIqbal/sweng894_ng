@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileComponent } from './edit-profile.component';
-import { VendorProfileService } from '../../services/vendorProfile.service';
+import { VendorProfileService } from '../../services/vendor-profile.service';
 
 describe('EditProfileComponent', () => {
 	let component: EditProfileComponent;
@@ -12,8 +12,7 @@ describe('EditProfileComponent', () => {
 			declarations: [EditProfileComponent],
 			imports: [FormsModule, ReactiveFormsModule ],
 			providers: [VendorProfileService]
-		})
-		.compileComponents();
+		}).compileComponents();
 	}));
 
 	beforeEach(() => {

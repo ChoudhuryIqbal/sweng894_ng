@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Vendor } from '../../models/vendor';
-import { VendorProfileService } from '../../services/vendorProfile.service';
+import { VendorProfileService } from '../../services/vendor-profile.service';
 
 @Component({
 	selector: 'app-edit-profile',
