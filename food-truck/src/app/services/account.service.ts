@@ -5,6 +5,7 @@ import { Account } from "../models/account";
 export class AccountService {
 
     private _accounts = {};
+    private _authenticated = false;
 
     constructor() {}
 
@@ -20,10 +21,16 @@ export class AccountService {
         return didCreate;
     }
 
-    login(username: string, password: string, type: string) {
-        const id = this._accounts.length;
-        const newAccount = new Account(id, username, password, type);
+    authenticate(username: string, password: string) {
+        if (this._accounts.hasOwnProperty(username)) {
+            const selectedUser = this._accounts[username] as Account;
+            this._authenticated = (password === selectedUser.password);
+        }
+    
+        return this._authenticated;
+    }
 
-        this._accounts.push(newAccount);
+    get authenticated(): boolean {
+        return this._authenticated;
     }
 }

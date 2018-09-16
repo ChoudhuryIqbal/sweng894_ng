@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 
-import { Account } from '../../models/account'; 
 import { AccountService } from '../../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +14,27 @@ export class LoginComponent  {
 	readonly VENDOR = 'vendor';
 
 	types = [this.CUSTOMER, this.VENDOR];
-	model = new Account(null, null, null, null);
+	credentials = {
+		username: '',
+		password: ''
+	};
 
 	submitted = false;
+	displayError = false;
 
-	constructor(private formBuilder: FormBuilder, private accountService: AccountService) {}
+	constructor(private router: Router, private accountService: AccountService) {}
 
 	onSubmit() {
-		this.submitted = true;
+		if (this.accountService.authenticated) {
+			this.submitted = true;
+			this.router.navigate(['/home']);
+		} else {
+			this.displayError = true;
+		}
 	}
 
-	login() {
-		this.accountService.login(this.model.username, this.model.password, this.model.type);
-		console.log(this.accountService.accounts);
+	authenticate() {
+		this.displayError = false;
+		this.accountService.authenticate(this.credentials.username, this.credentials.password);
 	}
-
 }

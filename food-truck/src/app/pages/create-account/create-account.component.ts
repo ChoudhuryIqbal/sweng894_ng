@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 import { Account } from '../../models/account'; 
 import { AccountService } from '../../services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-create-account',
@@ -20,10 +20,11 @@ export class CreateAccountComponent {
 	submitted = false;
 	displayError = false;
 
-	constructor(private accountService: AccountService) {}
+	constructor(private router: Router, private accountService: AccountService) {}
 
 	onSubmit() {
 		this.submitted = true;
+		this.router.navigate(['/login']);
 	}
 
 	createAccount() {
