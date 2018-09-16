@@ -13,7 +13,7 @@ import { VendorProfileService } from './services/vendorProfile.service';
 
 @NgModule({
 	declarations: [
-		AppComponent,
+		AppComponent
 	],
 	imports: [
 		BrowserModule,
