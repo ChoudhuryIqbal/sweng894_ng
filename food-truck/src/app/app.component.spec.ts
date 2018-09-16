@@ -1,12 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ROUTES } from './exports/routes';
+import { ComponentsModule } from './exports/components.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [
-                AppComponent
-            ],
+            imports: [ComponentsModule, RouterTestingModule.withRoutes(ROUTES)],
+            declarations: [AppComponent],
         }).compileComponents();
     }));
 
@@ -29,6 +31,6 @@ describe('AppComponent', () => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
     
-        expect(compiled.querySelector('h1').textContent).toContain('Welcome to food-truck!');
+        expect(compiled.querySelector('h1').textContent).toContain('Food Truck Finder');
     }));
 });
