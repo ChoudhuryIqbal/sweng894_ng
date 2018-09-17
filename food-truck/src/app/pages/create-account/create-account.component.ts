@@ -30,7 +30,7 @@ export class CreateAccountComponent {
 	createAccount() {
 		this.displayError = false;
 		
-		if(!this.accountService.createAccount(this.model.username, this.model.password, this.model.type)) {
+		if (!this.accountService.createAccount(this.model.username, this.model.password, this.model.type)) {
 			this.displayError = true;
 		};
 	}
