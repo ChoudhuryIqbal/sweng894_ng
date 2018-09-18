@@ -30,7 +30,15 @@ export class AccountService {
         return this._authenticated;
     }
 
+    reset() {
+        this._accounts = {};
+    }
+
     get authenticated(): boolean {
         return this._authenticated;
+    }
+
+    get accounts(): any {
+        return this._accounts;
     }
 }
