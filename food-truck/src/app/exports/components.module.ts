@@ -8,13 +8,17 @@ import { CreateEventComponent } from "../pages/create-event/create-event.compone
 import { EditProfileComponent } from "../pages/edit-profile/edit-profile.component";
 import { LoginComponent } from "../pages/login/login.component"
 import { HomeComponent } from "../pages/home/home.component";
+import { EventsComponent } from '../pages/events/events.component';
+import { EventDetailsComponent } from '../pages/event-details/event-details.component'
 
 const Components = [
     CreateAccountComponent,
     CreateEventComponent,
     EditProfileComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    EventsComponent,
+    EventDetailsComponent
 ];
 
 @NgModule({

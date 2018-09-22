@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RestService } from './services/rest.service';
 import { AccountService } from './services/account.service';
-import { VendorProfileService } from './services/vendor-profile.service';
+import { EventService } from './services/event.service';
 
 @NgModule({
 	declarations: [
@@ -21,7 +21,7 @@ import { VendorProfileService } from './services/vendor-profile.service';
 		ComponentsModule,
 		AppRoutingModule
 	],
-	providers: [RestService, AccountService, VendorProfileService],
+	providers: [RestService, AccountService, EventService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

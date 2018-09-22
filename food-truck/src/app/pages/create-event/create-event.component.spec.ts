@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateEventComponent } from './create-event.component';
-import { VendorProfileService } from '../../services/vendor-profile.service';
+import { EventService } from '../../services/event.service';
 
 xdescribe('CreateEventComponent', () => {
     let component: CreateEventComponent;
@@ -11,7 +11,7 @@ xdescribe('CreateEventComponent', () => {
         TestBed.configureTestingModule({
             declarations: [CreateEventComponent],
             imports: [FormsModule, ReactiveFormsModule],
-            providers: [VendorProfileService]
+            providers: [EventService]
         })
             .compileComponents();
     }));
