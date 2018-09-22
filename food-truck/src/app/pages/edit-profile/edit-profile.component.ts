@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Vendor } from '../../models/vendor';
-import { VendorService } from '../../services/vendor.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
 	selector: 'app-edit-profile',
@@ -15,7 +15,7 @@ export class EditProfileComponent {
 	categories=['Italian', 'American', 'Mexican']
 	model = new Vendor(null, null, null, null, null, null, null);
 
-	constructor(private formBuilder: FormBuilder, private vendorService: VendorService) {}
+	constructor(private formBuilder: FormBuilder, private eventService: EventService) {}
 
 	onSubmit() {
 		this.submitted = true;
@@ -28,7 +28,7 @@ export class EditProfileComponent {
 	}
 
 	createVendorProfile(){
-		this.vendorService.createVendorProfile(1, this.model.name, this.model.foodType, this.model.description, this.model.menu, this.model.images)
+		this.eventService.createEvent(1, this.model.name, this.model.foodType, this.model.description, null, null)
 	}
 	
 

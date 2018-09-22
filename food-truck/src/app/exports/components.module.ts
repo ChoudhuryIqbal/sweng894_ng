@@ -8,8 +8,8 @@ import { CreateEventComponent } from "../pages/create-event/create-event.compone
 import { EditProfileComponent } from "../pages/edit-profile/edit-profile.component";
 import { LoginComponent } from "../pages/login/login.component"
 import { HomeComponent } from "../pages/home/home.component";
-import { VendorsListComponent } from '../pages/vendors-list/vendors-list.component';
-import { VendorDetailsComponent } from '../pages/vendor-details/vendor-details.component'
+import { EventsComponent } from '../pages/events/events.component';
+import { EventDetailsComponent } from '../pages/event-details/event-details.component'
 
 const Components = [
     CreateAccountComponent,
@@ -17,8 +17,8 @@ const Components = [
     EditProfileComponent,
     LoginComponent,
     HomeComponent,
-    VendorsListComponent,
-    VendorDetailsComponent
+    EventsComponent,
+    EventDetailsComponent
 ];
 
 @NgModule({
