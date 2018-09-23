@@ -2,14 +2,14 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AccountService } from "../services/account.service";
 import { RestService } from "../services/rest.service";
-import { VendorProfileService } from "../services/vendor-profile.service";
+import { EventsResolverService } from "../services/events-resolver.service"
 
 @NgModule({
     imports: [CommonModule],
     providers: [
         AccountService,
         RestService,
-        VendorProfileService
+        EventsResolverService
     ]
 })
 export class ServicesModule {}
