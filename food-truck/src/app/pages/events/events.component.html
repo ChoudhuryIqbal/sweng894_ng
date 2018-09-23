@@ -1,9 +1,9 @@
   <div class="row" *ngFor="let event of events" [routerLink]="['/event', event.id]">
     <div class="col-md-10">
       <div class="well">
-          <h4>{{event.name}}</h4>
-          <h6>{{event.foodType}}</h6>
-          <h6>{{event.description}}</h6>
+          <h4>{{event.vendor.name}}</h4>
+          Category: <p>{{event.vendor.foodType}}</p>
+          Description: <p>{{event.vendor.description}}</p>
       </div>
     </div>
   </div>
