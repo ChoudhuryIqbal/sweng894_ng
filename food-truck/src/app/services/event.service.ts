@@ -8,14 +8,6 @@ export class EventService {
         
     }
 
-    getEvents() {
-        return EVENTS;
-    }
-
-    getEvent(id:number) {
-        return EVENTS.find(vendor => vendor.id === id)
-    }
-
     createEvent(id: number, name: string, foodType: string, menu: string, images: Array<File>, description: string) {
         const newVendor = new Vendor(id, name, foodType, description, menu, images, null);
 

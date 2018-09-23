@@ -6,10 +6,7 @@ import { AppComponent } from './app.component';
 
 import { ComponentsModule } from './exports/components.module';
 import { AppRoutingModule } from './app-routing.module';
-
-import { RestService } from './services/rest.service';
-import { AccountService } from './services/account.service';
-import { EventService } from './services/event.service';
+import { ServicesModule } from './exports/services.module'
 
 @NgModule({
 	declarations: [
@@ -19,9 +16,10 @@ import { EventService } from './services/event.service';
 		BrowserModule,
 		HttpClientModule,
 		ComponentsModule,
-		AppRoutingModule
+		AppRoutingModule,
+		ServicesModule
 	],
-	providers: [RestService, AccountService, EventService],
+	providers: [],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

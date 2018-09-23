@@ -6,6 +6,7 @@ import { LoginComponent } from "../pages/login/login.component";
 import { HomeComponent } from "../pages/home/home.component";
 import { EventsComponent } from "../pages/events/events.component";
 import { EventDetailsComponent } from "../pages/event-details/event-details.component"
+import { EventsResolverService } from "../services/events-resolver.service";
 
 export const ROUTES: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -14,7 +15,9 @@ export const ROUTES: Routes = [
 	{ path: 'createEvent', component: CreateEventComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: '', redirectTo: '/login', pathMatch: 'full' },
-	{ path : 'events', component : EventsComponent},
-	{ path : 'event/:id', component : EventDetailsComponent }
+	{ path : 'events', component : EventsComponent, resolve : {
+		events: EventsResolverService }},
+	{ path : 'event/:id', component : EventDetailsComponent, resolve : {
+		events: EventsResolverService }}
 
 ];

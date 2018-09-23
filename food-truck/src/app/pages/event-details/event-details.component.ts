@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Vendor } from '../../models/vendor';
-import { EventService } from '../../services/event.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,10 +8,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
-  vendor : any
-  constructor(private vendorService : EventService, private route:ActivatedRoute) { }
+  event: any
+  events : any
+  constructor(private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.vendor = this.vendorService.getEvent(+this.route.snapshot.params['id'])
+    this.events = this.route.snapshot.data['events']
+    this.event = this.events.find(event => event.id === +this.route.snapshot.params['id'])
   }
+
+
 }

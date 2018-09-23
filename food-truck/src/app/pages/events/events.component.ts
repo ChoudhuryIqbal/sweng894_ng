@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ Vendor } from "../../models/vendor"
-import { EventService } from "../../services/event.service"
-import { EventsResolver } from "../../services/events-resolver.service"
+import { ActivatedRoute } from "@angular/router"
 
 @Component({
   templateUrl: './events.component.html',
@@ -9,11 +8,11 @@ import { EventsResolver } from "../../services/events-resolver.service"
 })
 export class EventsComponent implements OnInit {
   events : any
-  constructor(private vendorService : EventService) { }
+  constructor(private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.events = this.vendorService.getEvents()
-    }
+    this.events = this.route.snapshot.data['events']
+  }
     
 }
 
