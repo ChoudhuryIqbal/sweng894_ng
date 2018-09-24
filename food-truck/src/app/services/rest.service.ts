@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { IObject } from '../utils/interfaces';
-import { catchError } from 'rxjs/operators'
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class RestService {

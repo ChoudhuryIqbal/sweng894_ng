@@ -13,7 +13,7 @@ export class EditProfileComponent {
 	images : File;
 	submitted = false;
 	categories=['Italian', 'American', 'Mexican']
-	model = new Vendor(null, null, null, null, null, null, null);
+	model = new Vendor(null, null, null, null, null);
 
 	constructor(private formBuilder: FormBuilder, private eventService: EventService) {}
 
@@ -28,7 +28,7 @@ export class EditProfileComponent {
 	}
 
 	createVendorProfile(){
-		this.eventService.createEvent(1, this.model.name, this.model.foodType, this.model.description, null, null)
+		this.eventService.createEvent(1, this.model.name, this.model.foodType, this.model.description, null)
 	}
 	
 

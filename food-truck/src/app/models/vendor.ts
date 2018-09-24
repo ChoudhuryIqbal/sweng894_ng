@@ -1,6 +1,6 @@
+import { Injectable } from "@angular/core";
 
-import { EventDetails } from './event-details';
-
+@Injectable()
 export class Vendor {
-    constructor(public id: number, public name: string, public foodType: string, public description: string, public menu: string, public images: Array<File>, public eventDetail : EventDetails) {}
+    constructor(public id: number, public name: string, public foodType: string, public description: string, public menu: string) {}
 }
