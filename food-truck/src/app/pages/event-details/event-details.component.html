@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-md-10">
+    <div class="well">
+        <h4>{{event.vendor.name}}</h4>
+        <p>{{event.vendor.foodType}}</p>
+        <p>{{event.vendor.description}}</p>
+        
+        <br /><h4>Sale Information</h4>
+        Description: <p>{{event.saleDescription}}</p>
+        Starts: <p>{{event.start}}</p>
+        Ends: <p>{{event.end}}</p>
+        Location: <p>{{event.address}}, {{event.city}}, {{event.state}} {{event.zip}}</p>
+        <img alt="image" src='{{event.vendor.menu}}' /><br />
+    </div>
+  </div>
+</div>
+<a [routerLink]="['/events']">View all Events</a>

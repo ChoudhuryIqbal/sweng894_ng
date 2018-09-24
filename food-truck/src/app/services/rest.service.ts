@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { IObject } from '../utils/interfaces';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class RestService {
@@ -10,7 +10,8 @@ export class RestService {
 	constructor(private http: HttpClient) { }
 
 	get(url: string): Observable<any> {
-		return this.http.get(url);
+		return this.http.get<any>(url)
+			.pipe(catchError(this.handleError<any>('get', [])));
 	}
 
 	promiseGet(url: string, subject: BehaviorSubject<IObject>): Promise<any> {
@@ -24,5 +25,12 @@ export class RestService {
 				}
 			});
 		});
+	}
+
+	private handleError<T> (operation='operation', result?: T){
+		return ( error : any): Observable<T> => {
+			console.error(error);
+			return of(result as T);
+		}
 	}
 }

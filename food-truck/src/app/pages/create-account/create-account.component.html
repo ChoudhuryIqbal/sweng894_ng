@@ -9,6 +9,9 @@
 
 	<div class="form-group">
 		<label for="username">Username</label>
+		<div [hidden]="!displayError" class="alert alert-danger">
+			Username already taken, please choose a different username
+		</div>
 		<input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
 		<div [hidden]="username.valid || username.pristine" class="alert alert-danger">
 			Username is required
@@ -22,9 +25,5 @@
 		</div>
 	</div>
 
-	<button type="submit" class="btn btn-success" (click)="createAccount(); accountForm.reset()" [disabled]="!accountForm.form.valid">Submit</button>
-</form>
-
-<form>
-
+	<button type="submit" class="btn btn-success" (click)="createAccount()" [disabled]="!accountForm.form.valid">Submit</button>
 </form>
