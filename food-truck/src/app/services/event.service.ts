@@ -30,13 +30,13 @@ export class EventService {
 		}
 	}
 
-    createEvent(id: number, name: string, foodType: string, menu: string, description: string) {
-        const newVendor = new Vendor(id, name, foodType, description, menu);
+    createEvent(username: string, name: string, foodType: string, menu: string, description: string) {
+        const newVendor = new Vendor(username, name, foodType, description, menu);
 
         EVENTS.push(newVendor);
     }
 }
 const EVENTS = [
-    {id: 1, name : "Italian Junky", foodType : "Italian", description: "Fun and loud with delicious food", menu : "/src/app/images/Italian.png"},
-    {id: 2, name : "Mexican Jiggler", foodType : "Mexican", description: "Zesty and authentic", menu : "/src/app/images/Mexican.jpg"},
+    {username: "user1", name : "Italian Junky", foodType : "Italian", description: "Fun and loud with delicious food", menu : "/src/app/images/Italian.png"},
+    {username: "user2", name : "Mexican Jiggler", foodType : "Mexican", description: "Zesty and authentic", menu : "/src/app/images/Mexican.jpg"},
 ]

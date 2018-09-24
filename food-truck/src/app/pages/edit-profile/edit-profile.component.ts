@@ -28,7 +28,7 @@ export class EditProfileComponent {
 	}
 
 	createVendorProfile(){
-		this.eventService.createEvent(1, this.model.name, this.model.foodType, this.model.description, null)
+		this.eventService.createEvent("user1", this.model.name, this.model.foodType, this.model.description, null)
 	}
 	
 
