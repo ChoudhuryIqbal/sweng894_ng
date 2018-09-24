@@ -2,7 +2,7 @@ import { Vendor } from "./vendor";
 
 export interface IEvent{
     id: number;
-    vendorId: number;
+    vendorUsername: string;
     start : Date;
     end: Date;
     address: string;
