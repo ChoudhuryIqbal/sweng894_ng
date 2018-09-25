@@ -7,39 +7,43 @@
 <div class="for-bg-im-body">
     <div class="lg-fm-box">
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-  <div class="form-group">
+ <!--
+ <div class="form-group">
      <tr><td><b>Food Truck Description:</b></td>
    <td><input type="text" formControlName="Truck" placeholder="Enter Food Truck Description"></td></tr></div>
+ -->
         <div class="form-group"><tr><td><b>Sales Description:</b></td>
-   <td><input type="text" formControlName="sales" placeholder=" Enter Sales Description"></td></tr></div>
+   <td><input type="text" formControlName="saleDescription" placeholder=" Enter Sales Description"></td></tr></div>
    <div class="form-group">
   <tr>
     <td><label for="fdate">From-</label></td>
-    <td><input type="date" id="from" size="20" formControlName="fromdate"/>
-   <input id="appt-time" type="time" formControlName="fromtime" value="00:00"></td></tr></div>
+    <td><input type="date" id="from" size="20" formControlName="start"/>
+  <!--  <input id="appt-time" type="time" formControlName="fromtime" value="00:00"> --></td></tr></div>
    <div class="form-group">
    <tr>
     <td><label for="tdate">To-</label></td>
-    <td><input type="date" id="to" formControlName="todate" size="20" />
-   <input id="appt-time" type="time" formControlName="totime" value="00:00"></td></tr></div>
+    <td><input type="date" id="to" formControlName="end" size="20" />
+   <!-- <input id="appt-time" type="time" formControlName="totime" value="00:00"> --></td></tr></div>
    <div class="form-group">
    <tr><td>Enter Location: </td>
     <td> <div class="container">
   <div class="form-group">
-    <input type="text" placeholder="Enter The Address" formControlName="location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
+    <input type="text" placeholder="Enter The Address" formControlName="address" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
   </div>
 </div></td></tr></div>
-     <tr><td><b>Enter The Item:</b></td>
+  <!--
+   <tr><td><b>Enter The Item:</b></td>
    <td><div *ngFor="let item of orderForm.get('items').controls; let i = index;">
     <div class="form-group">
     <input formControlName="name" placeholder="Enter Item's name"></div>
     <div class="form-group">
     <input formControlName="price" placeholder="Enter Item's Price"></div>
-  
+
 
   </div>
   <button (click)="addItem()">Add Row</button>
   </td></tr>
+ -->
 
 
 <div class="form-group">

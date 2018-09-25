@@ -9,8 +9,8 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class EventService {
     event : any
-    constructor(public restService : RestService, private http : HttpClient) { 
-        
+    constructor(public restService : RestService, private http : HttpClient) {
+
     }
 
     getEvent(id : number) : Observable<IEvent>{
@@ -18,9 +18,10 @@ export class EventService {
         .pipe(catchError(this.handleError<any>('getEvent')));
     }
 
-    getEvents() : Observable<IEvent[]>{
+    getEvents(value) : Observable<IEvent[]>{
         return this.restService.get('/api/getEvents')
         .pipe(catchError(this.handleError<any>('getEvents', [])));
+        this.createEvent(this.value);
     }
 
     private handleError<T> (operation='operation', result?: T){

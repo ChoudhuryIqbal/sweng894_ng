@@ -28,16 +28,10 @@ export class CreateEventComponent implements OnInit {
         });
 
         this.registerForm = this.formBuilder.group({
-            Truck: new FormControl(),
-            sales: new FormControl(),
-            fromdate: new FormControl(),
-            fromtime: new FormControl(),
-            totime: new FormControl(),
-            todate: new FormControl(),
-            items: new FormControl(),
-            name: new FormControl(),
-            price: new FormControl(),
-            location: new FormControl(),
+            saleDescription: new FormControl(),
+            start: new FormControl(),
+            end: new FormControl(),
+            address: new FormControl(),
         });
 
         this.mapsAPILoader.load().then(() => {
@@ -67,8 +61,15 @@ export class CreateEventComponent implements OnInit {
     }
 
     onSubmit() {
-        this.eventId = this.eventId + 1;
-        var value = this.registerForm.value;
-        this.createEventService.saveData(value);
-    }
+    var value = this.registerForm.value;
+    this.getevents(value);
+
+  }
+
+getevents(value){
+      this.eventservice.getEvents<any[]>()
+            .subscribe((data: any[]) => this.registerForm.value = data,
+              this.router.navigate(['/events']);)
+
+}
 }
