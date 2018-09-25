@@ -9,6 +9,11 @@ export class RestService {
 
 	constructor(private http: HttpClient) { }
 
+	post(url: string, body: any): Observable<any> {
+		return this.http.post<any>(url, body)
+			.pipe(catchError(this.handleError<any>('post', [])));
+	}
+
 	get(url: string): Observable<any> {
 		return this.http.get<any>(url)
 			.pipe(catchError(this.handleError<any>('get', [])));

@@ -1,3 +1,13 @@
+import { Vendor } from './vendor';
+
 export class Event {
-    constructor(public des: string, public sales: string, public from: string, public to: string, public  location : string , public item: string){}
+    constructor(
+        public id: number,
+        public vendorUsername: string,
+        public start: Date,
+        public end: Date,
+        public address: string,
+        public saleDescription: string,
+        public vendor: Vendor
+    ) { }
 }
