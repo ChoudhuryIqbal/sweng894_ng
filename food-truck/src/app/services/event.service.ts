@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Vendor } from "../models/vendor";
 import { RestService } from "./rest.service";
-import { HttpClient } from "@angular/common/http";
 import { Observable, of } from 'rxjs';
 import { IEvent } from '../models/i-event';
 import { catchError } from 'rxjs/operators';
@@ -9,12 +8,12 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class EventService {
     event : any
-    constructor(public restService : RestService, private http : HttpClient) { 
+    constructor(public restService : RestService) { 
         
     }
 
     getEvent(id : number) : Observable<IEvent>{
-        return this.http.get<IEvent>("/api/getEvent/" + id)
+        return this.restService.get("/api/getEvent/" + id)
         .pipe(catchError(this.handleError<any>('getEvent')));
     }
 

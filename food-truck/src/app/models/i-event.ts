@@ -6,8 +6,6 @@ export interface IEvent{
     start : Date;
     end: Date;
     address: string;
-    zipcode: string;
-    city : string;
     saleDescription : string;
     vendor : Vendor;
 }
