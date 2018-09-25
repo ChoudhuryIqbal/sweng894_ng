@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-
 import { ComponentsModule } from './exports/components.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ServicesModule } from './exports/services.module'
+import { AgmCoreModule } from '@agm/core';
+import { RestService } from './services/rest.service';
+import { AccountService } from './services/account.service';
+import { CreateEventService } from './services/create-event.service';
 
 @NgModule({
 	declarations: [
@@ -16,10 +17,13 @@ import { ServicesModule } from './exports/services.module'
 		BrowserModule,
 		HttpClientModule,
 		ComponentsModule,
-		AppRoutingModule,
-		ServicesModule
+		AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCsVXEjmNBqq8gKxIJeu4Aqno25tEmuIAU',
+        libraries: ["places"],
+    }),
+		AppRoutingModule
 	],
-	providers: [],
+	providers: [RestService, AccountService, CreateEventService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

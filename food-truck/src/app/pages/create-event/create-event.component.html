@@ -6,35 +6,48 @@
 <table  id="table" align="center">
 <div class="for-bg-im-body">
     <div class="lg-fm-box">
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+  <div class="form-group">
      <tr><td><b>Food Truck Description:</b></td>
-   <td><input type="text" name="r" placeholder="Enter Food Truck Description"></td></tr>
-        <tr><td><b>Sales Description:</b></td>
-   <td><input type="text" name="r" placeholder=" Enter Sales Description"></td></tr>
-	<tr>
+   <td><input type="text" formControlName="Truck" placeholder="Enter Food Truck Description"></td></tr></div>
+        <div class="form-group"><tr><td><b>Sales Description:</b></td>
+   <td><input type="text" formControlName="sales" placeholder=" Enter Sales Description"></td></tr></div>
+   <div class="form-group">
+  <tr>
     <td><label for="fdate">From-</label></td>
-    <td><input type="date" id="from" name="from" size="20" />
-   <input id="appt-time" type="time" name="appt-time" value="00:00"></td></tr>
+    <td><input type="date" id="from" size="20" formControlName="fromdate"/>
+   <input id="appt-time" type="time" formControlName="fromtime" value="00:00"></td></tr></div>
+   <div class="form-group">
    <tr>
     <td><label for="tdate">To-</label></td>
-    <td><input type="date" id="to" name="to" size="20" />
-   <input id="appt-time" type="time" name="appt-time" value="00:00"></td></tr>
-
-
-   <tr><td><b>Enter The Item:</b></td>
-   <td><div><div formArrayName="items"
-  *ngFor="let item of orderForm.get('items').controls; let i = index;">
-  <div [formGroupName]="i">
-    <input formControlName="name" placeholder="Enter Item's name">
-    <input formControlName="price" placeholder="Enter Item's Price">
+    <td><input type="date" id="to" formControlName="todate" size="20" />
+   <input id="appt-time" type="time" formControlName="totime" value="00:00"></td></tr></div>
+   <div class="form-group">
+   <tr><td>Enter Location: </td>
+    <td> <div class="container">
+  <div class="form-group">
+    <input type="text" placeholder="Enter The Address" formControlName="location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
   </div>
+</div></td></tr></div>
+     <tr><td><b>Enter The Item:</b></td>
+   <td><div *ngFor="let item of orderForm.get('items').controls; let i = index;">
+    <div class="form-group">
+    <input formControlName="name" placeholder="Enter Item's name"></div>
+    <div class="form-group">
+    <input formControlName="price" placeholder="Enter Item's Price"></div>
+  
 
-</div>
-<button (click)="addItem()">Add Row</button>
-</div></td></tr>
+  </div>
+  <button (click)="addItem()">Add Row</button>
+  </td></tr>
+
+
+<div class="form-group">
 
     <input type="submit" name="submit" value="Submit" class="btn btn-primary btn btn-info" id="submit-id" />
-    <input type="reset" name="reset" value="Reset" class="btn " id="button-id" />
+    <input type="reset" name="reset" value="Reset" class="btn " id="button-id" /></div>
 </form>
 </div>
 </div></table>
+
+
