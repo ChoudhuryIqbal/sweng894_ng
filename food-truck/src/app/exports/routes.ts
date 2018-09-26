@@ -15,9 +15,9 @@ export const ROUTES: Routes = [
 	{ path: 'createEvent', component: CreateEventComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: '', redirectTo: '/login', pathMatch: 'full' },
-	{ path : 'events', component : EventsComponent, resolve : {
+	{ path : 'events', runGuardsAndResolvers: "always",
+		component : EventsComponent, resolve : {
 		events: EventsResolverService }},
-	{ path : 'event/:id', component : EventDetailsComponent, resolve : {
-		events: EventsResolverService }}
+	{ path : 'event/:id', component : EventDetailsComponent}
 
 ];
