@@ -27,7 +27,7 @@ export class LoginComponent  {
 	onSubmit() {
 		if (this.accountService.authenticated) {
 			this.submitted = true;
-			this.router.navigate(['/home']);
+			this.router.navigate(['/events']);
 		} else {
 			this.displayError = true;
 		}
