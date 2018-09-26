@@ -26,10 +26,4 @@ export class EditProfileComponent {
 	onImageUpload(event) {
 		this.images = event.target.files[0]
 	}
-
-	createVendorProfile(){
-		this.eventService.createEvent("user1", this.model.name, this.model.foodType, this.model.description, null)
-	}
-	
-
 }

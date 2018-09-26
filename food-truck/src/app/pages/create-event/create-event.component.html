@@ -1,53 +1,35 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<h2>Enter The Event Details</h2><br>
 
-<h2 align="center">Enter The Event Details</h2><br>
-<table  id="table" align="center">
-<div class="for-bg-im-body">
-    <div class="lg-fm-box">
-<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-  <div class="form-group">
-     <tr><td><b>Food Truck Description:</b></td>
-   <td><input type="text" formControlName="Truck" placeholder="Enter Food Truck Description"></td></tr></div>
-        <div class="form-group"><tr><td><b>Sales Description:</b></td>
-   <td><input type="text" formControlName="sales" placeholder=" Enter Sales Description"></td></tr></div>
-   <div class="form-group">
-  <tr>
-    <td><label for="fdate">From-</label></td>
-    <td><input type="date" id="from" size="20" formControlName="fromdate"/>
-   <input id="appt-time" type="time" formControlName="fromtime" value="00:00"></td></tr></div>
-   <div class="form-group">
-   <tr>
-    <td><label for="tdate">To-</label></td>
-    <td><input type="date" id="to" formControlName="todate" size="20" />
-   <input id="appt-time" type="time" formControlName="totime" value="00:00"></td></tr></div>
-   <div class="form-group">
-   <tr><td>Enter Location: </td>
-    <td> <div class="container">
-  <div class="form-group">
-    <input type="text" placeholder="Enter The Address" formControlName="location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>
-  </div>
-</div></td></tr></div>
-     <tr><td><b>Enter The Item:</b></td>
-   <td><div *ngFor="let item of orderForm.get('items').controls; let i = index;">
+<form (ngSubmit)="onSubmit()" [formGroup]="eventForm">
     <div class="form-group">
-    <input formControlName="name" placeholder="Enter Item's name"></div>
+        <label for="truck-description">Vendor Description</label>
+        <input type="text" class="form-control" formControlName="vendorDescription" placeholder="Describe your business...">
+    </div>
+
     <div class="form-group">
-    <input formControlName="price" placeholder="Enter Item's Price"></div>
-  
+        <label for="truck-description">Event Description</label>
+        <input type="text" class="form-control" formControlName="eventDescription" placeholder="Describe your event...">
+    </div>
 
-  </div>
-  <button (click)="addItem()">Add Row</button>
-  </td></tr>
+    <div class="form-group">
+        <label for="fdate">Start Time</label>
+        <input type="date" id="from" class="form-control" size="20" formControlName="startDate"/>
+        <input type="time" id="appt-time" class="form-control" formControlName="startTime" value="00:00">
+    </div>
 
+    <div class="form-group">
+        <label for="tdate">End Time</label>
+        <input type="date" id="to" class="form-control" formControlName="endDate" size="20" />
+        <input type="time" id="appt-time" class="form-control" formControlName="endTime" value="00:00">
+    </div>
 
-<div class="form-group">
+    <div class="form-group">
+        <label for="lodcation">Location</label>
+        <input type="text" class="form-control" placeholder="Where is your sale happening?" formControlName="location" autocorrect="off">
+    </div>
 
-    <input type="submit" name="submit" value="Submit" class="btn btn-primary btn btn-info" id="submit-id" />
-    <input type="reset" name="reset" value="Reset" class="btn " id="button-id" /></div>
+    <div class="form-group">
+        <input type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" />
+        <input type="reset" name="reset" value="Reset" class="btn btn-secondary" id="button-id" />
+    </div>
 </form>
-</div>
-</div></table>
-
-
