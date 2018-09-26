@@ -18,7 +18,7 @@ export class EventService {
         // TODO: Perhaps initialize events
     }
 
-    createEvent(event: Event) {
+    createEvent(event: Event): Promise<any> {
         // TODO: Decomposing event to send without Vendor, fix
         const payload = {
             id: event.id,
@@ -29,8 +29,14 @@ export class EventService {
             address: event.address
         };
 
-        this.events.push(event);
-        this.postEvent(JSON.stringify(payload));
+        return new Promise((resolve,reject) => {
+            this.postEvent(JSON.stringify(payload)).subscribe((response: any) => {
+                if (response) {
+                    this.events.push(event);
+                    resolve();
+                }
+            });
+        });
     }
 
     getEvent(id: number): Observable<Event> {
@@ -44,8 +50,7 @@ export class EventService {
     }
 
     postEvent(payload: any): Observable<Event> {
-        return this.restService.post('/api/createEvent/', payload)
-            .pipe(catchError(this.handleError<any>('createEvent')));
+        return this.restService.post('/api/createEvent/', payload);
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
