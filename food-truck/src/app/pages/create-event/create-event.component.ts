@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event';
 import { Vendor } from '../../models/vendor';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-event',
@@ -13,7 +14,7 @@ export class CreateEventComponent implements OnInit {
 
     eventForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private eventService: EventService) { }
+    constructor(private router: Router, private formBuilder: FormBuilder, private eventService: EventService) { }
 
     ngOnInit() {
         this.eventForm = this.formBuilder.group({
@@ -42,6 +43,8 @@ export class CreateEventComponent implements OnInit {
             vendor
         );
 
-        this.eventService.createEvent(event);
+        this.eventService.createEvent(event).then(() => {
+            this.router.navigate(['/events']);
+        });
     }
 }

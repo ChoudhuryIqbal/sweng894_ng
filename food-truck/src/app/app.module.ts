@@ -8,6 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { RestService } from './services/rest.service';
 import { AccountService } from './services/account.service';
 import { EventService } from './services/event.service';
+import { EventsResolverService } from './services/events-resolver.service';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,7 @@ import { EventService } from './services/event.service';
     }),
 		AppRoutingModule
 	],
-	providers: [RestService, AccountService, EventService],
+	providers: [RestService, AccountService, EventService, EventsResolverService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
