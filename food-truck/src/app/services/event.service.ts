@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { RestService } from "./rest.service";
 import { Observable, of } from 'rxjs';
 import { Event } from '../models/event';
+import { Review } from '../models/review';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
@@ -38,10 +39,18 @@ export class EventService {
             });
         });
     }
+    createReview(payload: any): Observable<Review>{
+        return this.restService.post('/api/createReview/', payload);
+    }
 
     getEvent(id: number): Observable<Event> {
         return this.restService.get("/api/getEvent/" + id)
             .pipe(catchError(this.handleError<any>('getEvent')));
+    }
+
+    getReviews(vendorUsername: string): Observable<Review[]> {
+        return this.restService.get("/api/getReviews/" + vendorUsername)
+            .pipe(catchError(this.handleError<any>('getReviews')));
     }
 
     getEvents(): Observable<Event[]> {
