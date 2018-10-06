@@ -1,34 +1,55 @@
-<div class="row">
-  <div class="col-md-10">
-    <div class="well">
-        <h4>{{event?.vendor?.name}}</h4>
-        <p>{{event?.vendor?.foodType}}</p>
-        <p>{{event?.vendor?.description}}</p>
-        
-        <br /><h4>Sale Information</h4>
-        Description: <p>{{event?.saleDescription}}</p>
-        Starts: <p>{{event?.start}}</p>
-        Ends: <p>{{event?.end}}</p>
-        Location: <p>{{event?.address}}</p>
-        <img alt="image" src='{{event?.vendor?.menu}}' /><br />
+<div *ngIf="event">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="well">
+          <h1>{{event?.vendor?.name}}
+            <h5><span class="glyphicon glyphicon-star-empty"></span>Rating: {{avgRating | number:'1.0-2' }}</h5>
+          </h1>
+          <p>Category: {{event?.vendor?.foodType}}</p>
+          <p>{{event?.vendor?.description}}</p>
+          
+          <br><h4>Sale Information</h4>
+          <p><span class="font-weight-bold">Description: </span> {{event?.saleDescription}}</p>
+          <p><span class="font-weight-bold">Starts: </span> {{event?.start}}</p>
+          <p><span class="font-weight-bold">Ends: </span>{{event?.end}}</p>
+          <p><span class="font-weight-bold">Location: </span>{{event?.address}}</p>
+          <img alt="image" src='{{event?.vendor?.menu}}' /><br />
+      </div>
     </div>
   </div>
-</div>
-<a [routerLink]="['/events']">View all Events</a>
+  <a [routerLink]="['/events']">View all Events</a>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="eventReviewForm" *ngIf="event">
-  <h1>Review this event</h1>
-  <div class="form-group" >
-    <label *ngFor="let rating of ratings" class="container ">{{rating.rating}} {{rating.text}}
-      <input type="radio" id="event-rating" formControlName="eventRating" [value]="rating.rating">
-      <span class="checkmark"></span>
-    </label>
-  </div>
-  <div class="form-group padding-top ">
-      <label for="event-review">Leave a comment</label>
-      <input type="text" class="form-control" formControlName="eventReview" placeholder="Review this event" value="eventReview" maxlength="140">
-  </div>
-  <div class="form-group">
-    <input type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" [disabled]="!eventReviewForm.valid"/>
-  </div>
-</form>
+  <form (ngSubmit)="onSubmit()" [formGroup]="eventReviewForm">
+    <h4>Review Vendor  <span class="glyphicon glyphicon-thumbs-up"></span></h4>
+    <div class="form-group" >
+      <label *ngFor="let rating of ratings" class="container ">{{rating.rating}} {{rating.text}}
+        <input type="radio" id="event-rating" formControlName="rating" [value]="rating.rating">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="form-group padding-top ">
+        <label for="event-review">Leave a comment</label>
+        <input type="text" class="form-control" formControlName="comment" placeholder="Review this event" value="comment" maxlength="140">
+    </div>
+    <div class="form-group">
+      <input type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" [disabled]="!eventReviewForm.valid"/>
+    </div>
+  </form>
+  <div class="table-responsive">
+    <h2>Reviews</h2>
+      <table class="table table-striped table-condensed">
+       <thead>
+         <tr>
+           <th class="col-md-2">Rating</th>
+           <th>Comment</th>
+        </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let review of reviews">
+           <td>{{review.rating}}</td>
+           <td>{{review.comment}}</td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+</div>
