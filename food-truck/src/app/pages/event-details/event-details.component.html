@@ -10,8 +10,8 @@
           
           <br><h4>Sale Information</h4>
           <p><span class="font-weight-bold">Description: </span> {{event?.saleDescription}}</p>
-          <p><span class="font-weight-bold">Starts: </span> {{event?.start}}</p>
-          <p><span class="font-weight-bold">Ends: </span>{{event?.end}}</p>
+          <p><span class="font-weight-bold">Starts: </span> {{event?.start | date : 'medium'}}</p>
+          <p><span class="font-weight-bold">Ends: </span>{{event?.end | date : 'medium'}}</p>
           <p><span class="font-weight-bold">Location: </span>{{event?.address}}</p>
           <img alt="image" src='{{event?.vendor?.menu}}' /><br />
       </div>

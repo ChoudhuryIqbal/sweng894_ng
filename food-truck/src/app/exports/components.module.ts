@@ -9,7 +9,8 @@ import { EditProfileComponent } from "../pages/edit-profile/edit-profile.compone
 import { LoginComponent } from "../pages/login/login.component"
 import { HomeComponent } from "../pages/home/home.component";
 import { EventsComponent } from '../pages/events/events.component';
-import { EventDetailsComponent } from '../pages/event-details/event-details.component'
+import { EventDetailsComponent } from '../pages/event-details/event-details.component';
+import { EventsFilterPipe } from '../filters/eventsFilterPipe';
 
 const Components = [
     CreateAccountComponent,
@@ -18,7 +19,8 @@ const Components = [
     LoginComponent,
     HomeComponent,
     EventsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventsFilterPipe
 ];
 
 @NgModule({
