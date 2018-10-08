@@ -37,8 +37,7 @@ describe('CreateAccountComponent', () => {
 	it('should create a new account', () => {
 		const username = 'user';
 		const password = 'pass';
-		const type = 'Customer';
-		const newAccount = new Account(username, password, type);
+		const newAccount = new Account(username, password);
 
 		component.model = newAccount;
 
@@ -52,8 +51,7 @@ describe('CreateAccountComponent', () => {
 	it('should not overwrite an existing account', () => {
 		const username = 'user';
 		const password = 'pass';
-		const type = 'Customer';
-		const newAccount = new Account(username, password, type);
+		const newAccount = new Account(username, password);
 
 		component.model = newAccount;
 		component.createAccount();
@@ -61,7 +59,7 @@ describe('CreateAccountComponent', () => {
 		expect(accountService.accounts[username]).toEqual(newAccount);
 
 		const newPassword = 'newpass';
-		component.model = new Account(username, newPassword, type);
+		component.model = new Account(username, newPassword);
 		component.createAccount();
 
 		expect(accountService.accounts[username]['password']).toBe(password);
@@ -70,8 +68,7 @@ describe('CreateAccountComponent', () => {
 	it('should display an error if a username is already taken', () => {
 		const username = 'user';
 		const password = 'pass';
-		const type = 'Customer';
-		const newAccount = new Account(username, password, type);
+		const newAccount = new Account(username, password);
 
 		expect(component.displayError).toBe(false);
 

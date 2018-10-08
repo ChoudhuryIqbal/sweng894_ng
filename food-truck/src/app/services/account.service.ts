@@ -9,11 +9,11 @@ export class AccountService {
 
     constructor() {}
 
-    createAccount(username: string, password: string, type: string): Boolean {
+    createAccount(username: string, password: string): Boolean {
         let didCreate = false;
 
         if (!this._accounts[username]) {
-            const newAccount = new Account(username, password, type);
+            const newAccount = new Account(username, password);
             this._accounts[username] = newAccount;
             didCreate = true;
         }
