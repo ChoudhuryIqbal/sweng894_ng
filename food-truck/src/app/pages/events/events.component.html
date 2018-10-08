@@ -3,7 +3,7 @@
 </div>
 <div class="row" *ngFor="let event of events" [routerLink]="['/event', event.id]">
     <div class="col-md-10">
-        <div class="well">
+        <div class="well clickable">
             <h4>{{event?.vendor?.name}}</h4>
             Category: <p>{{event?.vendor?.foodType}}</p>
             Starts: <p>{{event.start}}</p>
