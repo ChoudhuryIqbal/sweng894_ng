@@ -2,7 +2,7 @@
     <button class="btn btn-primary nav-button" [routerLink]="['/createEvent']">Create new event</button>
 </div>
 <div class="row" *ngFor="let event of events" [routerLink]="['/event', event.id]">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="well clickable">
             <h4>{{event?.vendor?.name}}</h4>
             Category: <p>{{event?.vendor?.foodType}}</p>
