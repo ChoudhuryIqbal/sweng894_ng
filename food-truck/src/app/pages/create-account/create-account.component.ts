@@ -11,12 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CreateAccountComponent {
 
-	readonly CUSTOMER = 'Customer';
-	readonly VENDOR = 'Vendor';
-
-	types = [this.CUSTOMER, this.VENDOR];
-	model = new Account('', '', this.CUSTOMER);
-
+	model = new Account('', '');
+	
 	submitted = false;
 	displayError = false;
 
@@ -30,7 +26,7 @@ export class CreateAccountComponent {
 	createAccount() {
 		this.displayError = false;
 		
-		if (!this.accountService.createAccount(this.model.username, this.model.password, this.model.type)) {
+		if (!this.accountService.createAccount(this.model.username, this.model.password)) {
 			this.displayError = true;
 		};
 	}

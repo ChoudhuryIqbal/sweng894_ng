@@ -1,13 +1,6 @@
 <h2>Create account</h2>
 <form #accountForm="ngForm" (ngSubmit)="onSubmit()">
 	<div class="form-group">
-		<label for="type">Account Type</label>
-		<select class="form-control" id="type" required>
-			<option *ngFor="let type of types" [value]="type">{{ type }}</option>
-		</select>
-	</div>
-
-	<div class="form-group">
 		<label for="username">Username</label>
 		<div [hidden]="!displayError" class="alert alert-danger">
 			Username already taken, please choose a different username

@@ -6,8 +6,8 @@
 
 </div>
 <div class="row" *ngFor="let event of events | eventsFilter : locationFilter" [routerLink]="['/event', event.id]">
-    <div class="col-md-10">
-        <div class="well">
+    <div class="col-md-12">
+        <div class="well clickable">
             <h4>{{event?.vendor?.name}}</h4>
             Category: <p>{{event?.vendor?.foodType}}</p>
             Starts: <p>{{event.start | date : 'medium'}}</p>
