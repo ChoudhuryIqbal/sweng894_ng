@@ -1,31 +1,31 @@
 import { Injectable } from "@angular/core";
 import { Account } from "../models/account";
+import { RestService } from "./rest.service";
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class AccountService {
 
     private _accounts = {};
     private _authenticated = false;
+    account : Account;
 
-    constructor() {}
+    constructor(private restService: RestService) {}
 
-    createAccount(username: string, password: string): Boolean {
-        let didCreate = false;
+    createAccount(payload : any): Observable<Account>{
+        return this.restService.post('/api/createAccount/', payload);
+    }
 
-        if (!this._accounts[username]) {
-            const newAccount = new Account(username, password);
-            this._accounts[username] = newAccount;
-            didCreate = true;
-        }
-
-        return didCreate;
+    getAccount(username: string) : Observable<Account>{
+        return this.restService.get('/api/getAccount/' + username);
     }
 
     authenticate(username: string, password: string) {
-        if (this._accounts.hasOwnProperty(username)) {
-            const selectedUser = this._accounts[username] as Account;
-            this._authenticated = (password === selectedUser.password);
-        }
+        this.getAccount(username).subscribe((account : Account) => {
+            if(account) {
+                this._authenticated = (password === account.password);
+            }
+		})
     
         return this._authenticated;
     }
