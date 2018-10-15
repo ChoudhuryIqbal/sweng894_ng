@@ -24,6 +24,7 @@ export class AccountService {
         this.getAccount(username).subscribe((account : Account) => {
             if(account) {
                 this._authenticated = (password === account.password);
+                sessionStorage.setItem("username", username);
             }
 		})
     

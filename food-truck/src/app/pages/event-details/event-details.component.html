@@ -21,17 +21,9 @@
             </div>
         </div>
     </div>
-
-    <br>
-    <h4>Sale Information</h4>
-    <p><span class="font-weight-bold">Description: </span> {{event?.saleDescription}}</p>
-    <p><span class="font-weight-bold">Starts: </span> {{event?.start}}</p>
-    <p><span class="font-weight-bold">Ends: </span>{{event?.end}}</p>
-    <p><span class="font-weight-bold">Location: </span>{{event?.address}}</p>
-    <img alt="image" src='{{event?.vendor?.menu}}' /><br />
 </div>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="eventReviewForm">
+<form (ngSubmit)="onSubmit()" *ngIf="event?.vendorUsername && loggedInUser" [formGroup]="eventReviewForm">
     <h4>Review Vendor <span class="glyphicon glyphicon-thumbs-up"></span></h4>
     <div class="form-group">
         <label *ngFor="let rating of ratings" class="container ">{{rating.rating}} {{rating.text}}

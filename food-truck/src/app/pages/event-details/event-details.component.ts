@@ -19,6 +19,7 @@ export class EventDetailsComponent implements OnInit {
     reviews : Array<Review>;
     pageReady = false;
     avgRating = 0;
+    loggedInUser : string;
 
     ratings = [
         {rating: 5, text: ' - Excellent'},
@@ -30,6 +31,7 @@ export class EventDetailsComponent implements OnInit {
     constructor(private eventService: EventService, private route: ActivatedRoute, private fb: FormBuilder) { };
 
     ngOnInit() {
+        this.loggedInUser = sessionStorage.getItem("username");
         const eventObservable: Observable<Event> = this.eventService.getEvent(+this.route.snapshot.params['id']);
         const reviewsObservable: Observable<Array<Review>> = eventObservable.pipe(
             switchMap((event: Event) => this.eventService.getReviews(event.vendorUsername))
@@ -61,6 +63,7 @@ export class EventDetailsComponent implements OnInit {
 
     private buildFormGroup(): FormGroup {
         return this.fb.group({
+            loggedInUser : [this.loggedInUser],
             vendorUsername: [this.event.vendorUsername],
             comment: ['', Validators.maxLength(140)],
             rating: ['', Validators.required]
