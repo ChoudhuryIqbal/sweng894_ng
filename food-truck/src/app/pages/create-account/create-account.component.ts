@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Account } from '../../models/account';
 import { AccountService } from '../../services/account.service';
-import { MenuItem } from '../../models/menuItem';
+import { MenuItem } from '../../models/menu-item';
 import { Router } from '@angular/router';
 
 @Component({
