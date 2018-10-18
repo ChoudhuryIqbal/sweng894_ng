@@ -10,12 +10,46 @@
 			Username is required
 		</div>
 	</div>
+
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel">
+		<input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password"
+		 #password="ngModel">
 		<div [hidden]="password.valid || password.pristine" class="alert alert-danger">
 			Password is required
 		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="menu"><h3>Menu (optional)</h3></label>
+		<div *ngFor="let item of menu; let i = index">
+			<div class="row-button">
+				<div class="form-group">
+					<label>Item Name:</label>
+					<input type="text" [(ngModel)]="item.name" class="form-control" name="{{item.name}}" placeholder="Enter Item's name"
+					 readonly="readonly">
+				</div>
+
+				<div class="form-group">
+					<label>Price:</label>
+					<input type="number" [(ngModel)]="item.price" class="form-control" name="{{item.price}}" placeholder="Enter Item's Price"
+					 readonly="readonly">
+				</div>
+			</div>
+			<button class="btn btn-danger row-button-btn" type="button" (click)="deleteItem(i)">Delete Item</button>
+		</div>
+
+		<h4>Add a new item:</h4>
+		<div class="row-button">
+			<div class="form-group">
+				<input type="text" [(ngModel)]="newItem.name" class="form-control" name="name" id="newItemName" placeholder="Enter Item's name">
+			</div>
+
+			<div class="form-group">
+				<input type="number" [(ngModel)]="newItem.price" class="form-control" name="price" id="newItemPrice" placeholder="Enter Item's Price">
+			</div>
+		</div>
+		<button class="btn btn-primary row-button-btn" type="button" (click)="addItem()">Add Item</button>
 	</div>
 
 	<button type="submit" class="btn btn-success" (click)="createAccount()" [disabled]="!accountForm.form.valid">Submit</button>

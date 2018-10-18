@@ -5,3 +5,14 @@
 .ng-invalid:not(form)  {
 	border-left: 5px solid #a94442; /* red */
 }
+
+.row-button {
+	width: 80%;
+	display: inline-block;
+	margin-bottom: 20px;
+}
+
+.row-button-btn {
+	margin-left: 30px;
+	display: inline-block;
+}

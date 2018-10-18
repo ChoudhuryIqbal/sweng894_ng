@@ -10,6 +10,9 @@
                 </h1>
                 <p>Category: {{event?.vendor?.foodType}}</p>
                 <p>{{event?.vendor?.description}}</p>
+                <div *ngIf="event.vendor.menu">
+                    there is a menu
+                </div>
 
                 <br>
                 <h4>Sale Information</h4>
