@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormArray, FormGroup, Validators } from '@angular/forms';
 import { Account } from '../../models/account';
 import { AccountService } from '../../services/account.service';
+import { MenuItem } from '../../models/menuItem';
 import { Router } from '@angular/router';
-import { string } from 'prop-types';
-import { privateEncrypt } from 'crypto';
-
 
 @Component({
 	selector: 'app-create-account',
@@ -17,7 +14,7 @@ export class CreateAccountComponent {
 	model = new Account('', '', null);
 	newAccount: Account;
 	menu: Array<any> = [];
-	newItem = {};
+	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
 
@@ -44,7 +41,7 @@ export class CreateAccountComponent {
 
 	addItem() {
 		this.menu.push(this.newItem)
-		this.newItem = {};
+		this.newItem = new MenuItem(null, null);
 	}
 
 	deleteItem(index: number) {
