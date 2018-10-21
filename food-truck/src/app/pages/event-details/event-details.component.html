@@ -1,17 +1,14 @@
 <p>
     <a [routerLink]="['/events']">Back to All Events</a>
 </p>
+<p>
+    <a [routerLink]="['/vendor/' + event?.vendorUsername]">Vendor details</a>
+</p>
+<app-vendor *ngIf="event" [vendorUsername]="event?.vendorUsername"></app-vendor>
 <div *ngIf="event">
     <div class="row">
         <div class="col-md-12">
             <div class="well">
-                <h1>{{event?.vendor?.name}}
-                    <h5><span class="glyphicon glyphicon-star-empty"></span>Rating: {{avgRating | number:'1.0-2' }}</h5>
-                </h1>
-                <p>Category: {{event?.vendor?.foodType}}</p>
-                <p>{{event?.vendor?.description}}</p>
-
-                <br>
                 <h4>Sale Information</h4>
                 <p><span class="font-weight-bold">Description: </span> {{event?.saleDescription}}</p>
                 <p><span class="font-weight-bold">Starts: </span> {{event?.start | date : 'medium'}}</p>
@@ -22,38 +19,4 @@
         </div>
     </div>
 </div>
-
-<form (ngSubmit)="onSubmit()" *ngIf="event?.vendorUsername && loggedInUser" [formGroup]="eventReviewForm">
-    <h4>Review Vendor <span class="glyphicon glyphicon-thumbs-up"></span></h4>
-    <div class="form-group">
-        <label *ngFor="let rating of ratings" class="container ">{{rating.rating}} {{rating.text}}
-            <input type="radio" id="event-rating" formControlName="rating" [value]="rating.rating">
-            <span class="checkmark"></span>
-        </label>
-    </div>
-    <div class="form-group padding-top ">
-        <label for="event-review">Leave a comment</label>
-        <input type="text" class="form-control" formControlName="comment" placeholder="Review this event" value="comment"
-            maxlength="140">
-    </div>
-    <div class="form-group">
-        <input type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" [disabled]="!eventReviewForm.valid" />
-    </div>
-</form>
-<div class="table-responsive">
-    <h2>Reviews</h2>
-    <table class="table table-striped table-condensed">
-        <thead>
-            <tr>
-                <th class="col-md-2">Rating</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let review of reviews">
-                <td>{{review.rating}}</td>
-                <td>{{review.comment}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<app-reviews *ngIf="event" [vendorUsername]="event?.vendorUsername"></app-reviews>

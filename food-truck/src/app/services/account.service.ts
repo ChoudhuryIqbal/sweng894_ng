@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Account } from "../models/account";
 import { RestService } from "./rest.service";
 import { Observable, of } from 'rxjs';
+import { Vendor } from '../models/vendor';
 
 @Injectable()
 export class AccountService {
@@ -20,13 +21,17 @@ export class AccountService {
         return this.restService.get('/api/getAccount/' + username);
     }
 
+    getVendorDetails(username: string) : Observable<Vendor>{
+        return this.restService.get('/api/getVendor/' + username);
+    }
+
     authenticate(username: string, password: string) {
         this.getAccount(username).subscribe((account : Account) => {
             if(account) {
                 this._authenticated = (password === account.password);
                 sessionStorage.setItem("username", username);
             }
-		})
+		});
     
         return this._authenticated;
     }
