@@ -21,20 +21,19 @@ export class LoginComponent  {
 
 	submitted = false;
 	displayError = false;
+	authenticated;
 
 	constructor(private router: Router, private accountService: AccountService) {}
 
 	onSubmit() {
-		if (this.accountService.authenticated) {
+		this.displayError = false;
+
+		this.authenticated=this.accountService.authenticate(this.credentials.username, this.credentials.password).valueOf;
+		if (this.authenticated) {
 			this.submitted = true;
 			this.router.navigate(['/events']);
 		} else {
 			this.displayError = true;
 		}
-	}
-
-	authenticate() {
-		this.displayError = false;
-		this.accountService.authenticate(this.credentials.username, this.credentials.password);
 	}
 }

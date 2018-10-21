@@ -1,22 +1,22 @@
 <h2>Create account</h2>
-<form #accountForm="ngForm" (ngSubmit)="onSubmit()">
-	<div class="form-group">
+<form [formGroup]="newAccountForm" (ngSubmit)="onSubmit()">
+	<div >
 		<label for="username">Username</label>
-		<div [hidden]="!displayError" class="alert alert-danger">
+		<div *ngIf="displayError" class="alert alert-danger">
 			Username already taken, please choose a different username
 		</div>
-		<input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username" #username="ngModel">
-		<div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+		<input type="text" class="form-control" id="username" required formControlName="username" name="username">
+		<div *ngIf="username.invalid && username.dirty" class="alert alert-danger">
 			Username is required
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel">
-		<div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+		<input type="password" class="form-control" id="password" required formControlName="password" name="password">
+		<div *ngIf="password.invalid && password.dirty" class="alert alert-danger">
 			Password is required
 		</div>
 	</div>
 
-	<button type="submit" class="btn btn-success" (click)="createAccount()" [disabled]="!accountForm.form.valid">Submit</button>
+	<button type="submit" class="btn btn-success" [disabled]="newAccountForm.invalid">Submit</button>
 </form>

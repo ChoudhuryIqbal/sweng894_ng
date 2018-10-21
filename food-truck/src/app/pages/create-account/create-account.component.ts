@@ -13,29 +13,34 @@ import { Router } from '@angular/router';
 export class CreateAccountComponent {
 
 	model = new Account('', '');
-	newAccount : Account;
-	submitted = false;
 	displayError = false;
+	newAccountForm: FormGroup;
 
+	constructor(
+		private router: Router, 
+		private accountService: AccountService, 
+		private fb: FormBuilder
+	) {}
 
-	constructor(private router: Router, private accountService: AccountService) {}
-
-	onSubmit() {
-		if(this.submitted){
-			this.router.navigate(['/login']);
-		}
+	get username() {
+		return this.newAccountForm.get('username');
 	}
 
-	createAccount() {
+	get password() {
+		return this.newAccountForm.get('password');
+	}
+
+	ngOnInit() {
+		this.newAccountForm = this.fb.group(this.model);
+		this.newAccountForm.get('username').setValidators(Validators.required);
+		this.newAccountForm.get('password').setValidators(Validators.required);
+	}
+
+	onSubmit() {
 		this.displayError = false;
-		this.accountService.createAccount(JSON.stringify(this.model)).subscribe((account : Account) => {
-			this.submitted = true;
-			this.newAccount = account;
-			if (!this.newAccount) {
-				this.displayError = true;
-			}
-		});
-		
-		
+		this.accountService.createAccount(JSON.stringify(this.newAccountForm.value)).subscribe((account : Account) => {
+			this.router.navigate(['/login']);
+		},
+		error => this.displayError = true);
 	}
 }

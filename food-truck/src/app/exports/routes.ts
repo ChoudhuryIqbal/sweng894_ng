@@ -6,6 +6,7 @@ import { LoginComponent } from "../pages/login/login.component";
 import { EventsComponent } from "../pages/events/events.component";
 import { EventDetailsComponent } from "../pages/event-details/event-details.component"
 import { EventsResolverService } from "../services/events-resolver.service";
+import { VendorDetailsComponent } from "../pages/vendor-details/vendor-details.component";
 
 export const ROUTES: Routes = [
 	{ path: 'createAccount', component: CreateAccountComponent },
@@ -16,6 +17,7 @@ export const ROUTES: Routes = [
 	{ path : 'events', runGuardsAndResolvers: "always",
 		component : EventsComponent, resolve : {
 		events: EventsResolverService }},
-	{ path : 'event/:id', component : EventDetailsComponent}
+	{ path : 'event/:id', component : EventDetailsComponent},
+	{ path : 'vendor/:username', component : VendorDetailsComponent}
 
 ];
