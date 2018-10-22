@@ -23,5 +23,5 @@
         <a [routerLink]="['/createAccount']">If you do not have an account, click here to create one</a>
     </div>
 
-    <button type="submit" class="btn btn-success" (click)="authenticate()" [disabled]="!loginForm.form.valid">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>
 </form>

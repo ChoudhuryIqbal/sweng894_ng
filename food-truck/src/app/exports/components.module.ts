@@ -9,6 +9,9 @@ import { LoginComponent } from "../pages/login/login.component"
 import { EventsComponent } from '../pages/events/events.component';
 import { EventDetailsComponent } from '../pages/event-details/event-details.component';
 import { EventsFilterPipe } from '../filters/eventsFilterPipe';
+import { VendorDetailsComponent } from '../pages/vendor-details/vendor-details.component';
+import { ReviewsComponent } from '../pages/reviews/reviews.component';
+import { VendorComponent } from '../pages/vendor/vendor.component';
 
 const Components = [
     CreateAccountComponent,
@@ -16,7 +19,10 @@ const Components = [
     LoginComponent,
     EventsComponent,
     EventDetailsComponent,
-    EventsFilterPipe
+    EventsFilterPipe,
+    VendorDetailsComponent,
+    ReviewsComponent,
+    VendorComponent
 ];
 
 @NgModule({
