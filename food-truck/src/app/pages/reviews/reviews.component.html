@@ -20,13 +20,19 @@
   <table class="table table-striped table-condensed">
       <thead>
           <tr>
+              <th>User</th>
               <th class="col-md-2">Rating</th>
               <th>Comment</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let review of reviews">
-              <td>{{review.rating}}</td>
+              <td>{{review.loggedInUser}}</td>
+              <td [ngClass]="{
+                  'rating-attractor' : review.rating === 5 || review.rating === 4,
+                  'rating-neutral': review.rating === 3,
+                  'rating-detractor' : review.rating === 2 || review.rating === 1
+                }">{{review.rating}}</td>
               <td>{{review.comment}}</td>
           </tr>
       </tbody>
