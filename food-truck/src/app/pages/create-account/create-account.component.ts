@@ -16,7 +16,6 @@ export class CreateAccountComponent {
 	model = new Account('', '', null);
 	newAccount: Account;
 	newAccountForm: FormGroup;
-	menu: Array<any> = [];
 	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
@@ -47,7 +46,9 @@ export class CreateAccountComponent {
 
 	onSubmit() {
 		this.displayError = false;
-		this.model.menu = this.menu;
+		if (!this.menuItems.pristine) {
+			this.model.menu = this.menuItems.value;
+		}
 		this.accountService.createAccount(JSON.stringify(this.newAccountForm.value)).subscribe((account : Account) => {
 			this.router.navigate(['/login']);
 		},
@@ -58,7 +59,7 @@ export class CreateAccountComponent {
 		this.menuItems.push(this.fb.control(''));
 	}
 
-	deleteItem(index: number) {
-		this.menu.splice(index, 1);
+	removeItem(index: number) {
+		this.menuItems.removeAt(index);
 	}
 }
