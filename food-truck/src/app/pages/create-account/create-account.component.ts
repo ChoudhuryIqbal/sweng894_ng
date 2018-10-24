@@ -19,6 +19,7 @@ export class CreateAccountComponent {
 	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
+	regions = ['Malvern', 'Philadelphia'];
 
 	constructor(private router: Router, private accountService: AccountService, private fb: FormBuilder) {}
 
@@ -38,6 +39,7 @@ export class CreateAccountComponent {
 		this.newAccountForm = this.fb.group({
 			username: ['', Validators.required],
 			password: ['', Validators.required],
+			region: ['', Validators.required],
 			menu: this.fb.array([
 				this.fb.control('')
 			])

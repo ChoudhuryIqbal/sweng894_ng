@@ -19,6 +19,13 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label for="region">Preferred Region</label>
+		<select class="form-control" id="region" formControlName="region" required>
+			<option *ngFor="let region of regions" [value]="region">{{region}}</option>
+		</select>
+	</div>
+
 	<div formArrayName="menu">
 		<label for="menu">
 			<h3>Menu (optional)</h3>
