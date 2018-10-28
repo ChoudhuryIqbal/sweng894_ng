@@ -12,6 +12,7 @@ export class LoginComponent  {
 
 	readonly CUSTOMER = 'customer';
 	readonly VENDOR = 'vendor';
+	loggedInUser : string;
 
 	types = [this.CUSTOMER, this.VENDOR];
 	credentials = {
@@ -30,6 +31,8 @@ export class LoginComponent  {
 
 		this.authenticated=this.accountService.authenticate(this.credentials.username, this.credentials.password).valueOf;
 		if (this.authenticated) {
+			sessionStorage.setItem("username", this.credentials.username);
+			this.loggedInUser = this.credentials.username;
 			this.submitted = true;
 			this.router.navigate(['/events']);
 		} else {
