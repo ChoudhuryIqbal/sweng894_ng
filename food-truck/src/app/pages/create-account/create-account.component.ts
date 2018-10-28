@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-
 import { Account } from '../../models/account';
 import { AccountService } from '../../services/account.service';
 import { MenuItem } from '../../models/menu-item';
@@ -19,6 +18,8 @@ export class CreateAccountComponent {
 	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
+	loggedInUser : string;
+	public isCollapsed = true;
 
 	constructor(private router: Router, private accountService: AccountService, private fb: FormBuilder) {}
 
@@ -35,13 +36,29 @@ export class CreateAccountComponent {
 	}
 
 	ngOnInit() {
+		this.loggedInUser = sessionStorage.getItem("username");
+
 		this.newAccountForm = this.fb.group({
 			username: ['', Validators.required],
 			password: ['', Validators.required],
+			name: ['', Validators.maxLength(300)],
+			foodType:['', Validators.maxLength(200)],
+			description: ['', Validators.maxLength(300)],
 			menu: this.fb.array([
 				this.fb.control('')
 			])
 		});
+
+		if(this.loggedInUser){
+			this.isCollapsed = false;
+			this.newAccountForm.setValue({
+				username: this.loggedInUser, 
+				password: "",
+				name : "",
+				foodType: "",
+				description: "",
+				menu: ["test"]});
+		}
 	}
 
 	onSubmit() {
