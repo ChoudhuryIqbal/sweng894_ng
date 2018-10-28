@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CreateAccountComponent } from "../pages/create-account/create-account.component";
 import { CreateEventComponent } from "../pages/create-event/create-event.component";
@@ -12,6 +13,7 @@ import { EventsFilterPipe } from '../filters/eventsFilterPipe';
 import { VendorDetailsComponent } from '../pages/vendor-details/vendor-details.component';
 import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { VendorComponent } from '../pages/vendor/vendor.component';
+import { NavbarComponent } from "../pages/navbar/navbar.component";
 
 const Components = [
     CreateAccountComponent,
@@ -22,11 +24,12 @@ const Components = [
     EventsFilterPipe,
     VendorDetailsComponent,
     ReviewsComponent,
-    VendorComponent
+    VendorComponent, 
+    NavbarComponent
 ];
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgbModule],
     declarations: [Components],
     exports: [Components, CommonModule]
 })
