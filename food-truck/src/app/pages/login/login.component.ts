@@ -29,7 +29,7 @@ export class LoginComponent  {
 	onSubmit() {
 		this.displayError = false;
 
-		this.authenticated=this.accountService.authenticate(this.credentials.username, this.credentials.password).valueOf;
+		this.authenticated=this.accountService.authenticate(this.credentials.username, this.credentials.password);
 		if (this.authenticated) {
 			sessionStorage.setItem("username", this.credentials.username);
 			this.loggedInUser = this.credentials.username;

@@ -12,7 +12,7 @@ import { MenuItem } from '../../models/menu-item';
 })
 export class CreateAccountComponent {
 
-	model = new Account('', '', null);
+	model = new Account('', '');
 	newAccount: Account;
 	newAccountForm: FormGroup;
 	newItem = new MenuItem(null, null);
@@ -31,52 +31,21 @@ export class CreateAccountComponent {
 		return this.newAccountForm.get('password');
 	}
 
-	get menuItems() {
-		return this.newAccountForm.get('menu') as FormArray;
-	}
-
 	ngOnInit() {
 		this.loggedInUser = sessionStorage.getItem("username");
 
 		this.newAccountForm = this.fb.group({
 			username: ['', Validators.required],
-			password: ['', Validators.required],
-			name: ['', Validators.maxLength(300)],
-			foodType:['', Validators.maxLength(200)],
-			description: ['', Validators.maxLength(300)],
-			menu: this.fb.array([
-				this.fb.control('')
-			])
-		});
-
-		if(this.loggedInUser){
-			this.isCollapsed = false;
-			this.newAccountForm.setValue({
-				username: this.loggedInUser, 
-				password: "",
-				name : "",
-				foodType: "",
-				description: "",
-				menu: ["test"]});
-		}
+			password: ['', Validators.required]
+		})
 	}
 
 	onSubmit() {
 		this.displayError = false;
-		if (!this.menuItems.pristine) {
-			this.model.menu = this.menuItems.value;
-		}
 		this.accountService.createAccount(JSON.stringify(this.newAccountForm.value)).subscribe((account : Account) => {
 			this.router.navigate(['/login']);
 		},
 		error => this.displayError = true);
 	}
 
-	addItem() {
-		this.menuItems.push(this.fb.control(''));
-	}
-
-	removeItem(index: number) {
-		this.menuItems.removeAt(index);
-	}
 }

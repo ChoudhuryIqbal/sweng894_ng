@@ -14,6 +14,7 @@ import { VendorDetailsComponent } from '../pages/vendor-details/vendor-details.c
 import { ReviewsComponent } from '../pages/reviews/reviews.component';
 import { VendorComponent } from '../pages/vendor/vendor.component';
 import { NavbarComponent } from "../pages/navbar/navbar.component";
+import { CreateVendorComponent } from "../pages/create-vendor/create-vendor.component";
 
 const Components = [
     CreateAccountComponent,
@@ -25,7 +26,8 @@ const Components = [
     VendorDetailsComponent,
     ReviewsComponent,
     VendorComponent, 
-    NavbarComponent
+    NavbarComponent,
+    CreateVendorComponent
 ];
 
 @NgModule({
