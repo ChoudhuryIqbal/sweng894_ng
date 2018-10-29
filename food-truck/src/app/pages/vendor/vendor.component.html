@@ -1,15 +1,20 @@
 <div>
-  <div class="row">
-      <div class="col-md-12">
-          <div class="well">
-              <h1>{{vendor?.name}}
-                  <h5><span class="glyphicon glyphicon-star-empty"></span>Rating: {{avgRating | number:'1.0-2' }}</h5>
-              </h1>
-              <p>Category: {{vendor?.foodType}}</p>
-              <p>Description: {{vendor?.description}}</p>
-              <p>Menu: {{vendor?.menu}}</p>
-          </div>
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <h1>{{vendor?.name}}
+                    <h5><span class="glyphicon glyphicon-star-empty"></span>Rating: {{avgRating | number:'1.0-2' }}</h5>
+                </h1>
+                <p>Category: {{vendor?.foodType}}</p>
+                <p>Description: {{vendor?.description}}</p>
+                <ng-container *ngIf="vendor?.menu.length > 0">
+                    <p>Menu:</p>
+                    <ul>
+                        <li *ngFor="let item of vendor?.menu">{{ item }}</li>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+    </div>
 
 </div>
