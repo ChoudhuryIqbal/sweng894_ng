@@ -20,5 +20,12 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label for="region">Preferred Region</label>
+		<select class="form-control" id="region" formControlName="region" required>
+			<option *ngFor="let region of regions" [value]="region">{{region}}</option>
+		</select>
+	</div>
+
 <button type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" [disabled]="newAccountForm.invalid">Submit</button>
 </form>
