@@ -29,7 +29,19 @@ export class CreateVendorComponent implements OnInit {
 			menu: this.fb.array([
 				this.fb.control('')
 			])
-		});
+    });
+    
+    this.accountService.getVendorDetails(sessionStorage.getItem("username")).subscribe((vendor : Vendor) => {
+      if(!vendor[0]){
+          this.vendorDetailsForm.setValue({
+              "username" : vendor.username,
+              "name" : vendor.name,
+              "foodType" : vendor.foodType,
+              "description" : vendor.description,
+              "menu" : vendor.menu
+          })
+      }
+  })
   }
   get menuItems() {
 		return this.vendorDetailsForm.get('menu') as FormArray;
