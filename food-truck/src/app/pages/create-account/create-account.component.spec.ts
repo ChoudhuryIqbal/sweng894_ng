@@ -43,7 +43,7 @@ describe('CreateAccountComponent', () => {
 
 		expect(accountService.accounts[username]).toBeUndefined();
 
-		component.createAccount();
+		component.onSubmit();
 		
 		expect(accountService.accounts[username]).toEqual(newAccount);
 	});
@@ -54,13 +54,13 @@ describe('CreateAccountComponent', () => {
 		const newAccount = new Account(username, password);
 
 		component.model = newAccount;
-		component.createAccount();
+		component.onSubmit();
 
 		expect(accountService.accounts[username]).toEqual(newAccount);
 
 		const newPassword = 'newpass';
 		component.model = new Account(username, newPassword);
-		component.createAccount();
+		component.onSubmit();
 
 		expect(accountService.accounts[username]['password']).toBe(password);
 	});
@@ -73,10 +73,10 @@ describe('CreateAccountComponent', () => {
 		expect(component.displayError).toBe(false);
 
 		component.model = newAccount;
-		component.createAccount();
+		component.onSubmit();
 
 		// Try to register the account again
-		component.createAccount();
+		component.onSubmit();
 
 		expect(component.displayError).toBe(true);
 	});

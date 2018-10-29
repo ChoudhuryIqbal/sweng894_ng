@@ -18,7 +18,7 @@ export class CreateEventComponent implements OnInit {
 
     ngOnInit() {
         this.eventForm = this.formBuilder.group({
-            vendorDescription: new FormControl(),
+            vendorUsername: new FormControl(),
             eventDescription: new FormControl(),
             startDate: new FormControl(),
             startTime: new FormControl(),
@@ -32,15 +32,13 @@ export class CreateEventComponent implements OnInit {
         // TODO: Dynamically pull Vendor, utilize time fields
 
         const id = this.eventService.events.length;
-        const vendor = new Vendor('username', 'name', 'foodType', 'description', 'menu');
         const event = new Event(
             id, 
-            this.eventForm.value.vendorDescription,
+            sessionStorage.getItem("username"),
             this.eventForm.value.startDate,
             this.eventForm.value.endDate,
             this.eventForm.value.location,
-            this.eventForm.value.eventDescription,
-            vendor
+            this.eventForm.value.eventDescription
         );
 
         this.eventService.createEvent(event).then(() => {
