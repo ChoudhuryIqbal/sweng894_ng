@@ -3,11 +3,10 @@
         <div class="navbar-header">
           <h1 [ngStyle]="{'color': 'white'}">Food Truck Finder</h1>
         </div>
-        <ul class="nav navbar-nav">
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/events']" href="#">Events</a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/createEvent']" href="#">Create Event</a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/createVendorProfile']" href="#">Create Vendor Profile</a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/createAccount']" href="#">Edit Account</a></li>
+        <ul class="nav navbar-nav" *ngIf="loggedInUser">
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/events']" href="#">Events   |</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/createEvent']" href="#">Create Event   |</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/createVendorProfile']" href="#">Vendor Profile</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!loggedInUser"><a [routerLink]="['/createAccount']" href="#"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
