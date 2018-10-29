@@ -8,6 +8,5 @@ export class Event {
         public end: Date,
         public address: string,
         public saleDescription: string,
-        public vendor: Vendor
     ) { }
 }

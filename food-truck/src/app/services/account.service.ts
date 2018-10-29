@@ -17,6 +17,10 @@ export class AccountService {
         return this.restService.post('/api/createAccount/', payload);
     }
 
+    createVendor(payload : any): Observable<Vendor>{
+        return this.restService.post('/api/createVendor/', payload);
+    }
+
     getAccount(username: string) : Observable<Account>{
         return this.restService.get('/api/getAccount/' + username);
     }

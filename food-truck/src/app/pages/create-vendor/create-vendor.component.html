@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<h2>Create Vendor Profile</h2><br>
+<form (ngSubmit)="onSubmit()" *ngIf="loggedInUser && vendorDetailsForm" [formGroup]="vendorDetailsForm">
+    <h4>Vendor Information <span class="glyphicon glyphicon-thumbs-up"></span></h4>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" value="name">
+    </div>
+    <div class="form-group padding-top ">
+        <label for="foodType">Type of Food</label>
+        <input type="text" class="form-control" formControlName="foodType" value="foodType" maxlength="140">
+    </div>
+    <div class="form-group padding-top ">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" formControlName="description" value="description" maxlength="140">
+    </div>
+    <div formArrayName="menu">
+        <label for="menu">
+            <h3>Menu (optional)</h3>
+        </label> 
+        <button class="btn btn-primary row-button-btn" type="button" (click)="addItem()">Add Item</button>
+        <div class="form-group" *ngFor="let item of menuItems.controls; let i = index">
+            <label for="description">Item {{ i + 1 }}
+                <input class="form-control" type="text" [formControlName]="i">
+            </label>
+            <button *ngIf="i > 0" class="btn btn-danger row-button-btn" type="button" (click)="removeItem(i)">Remove Item</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="submit" value="Submit" class="btn btn-primary nav-button" id="submit-id" [disabled]="!vendorDetailsForm.valid" />
+    </div>
+    </form>
