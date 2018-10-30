@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Account } from "../models/account";
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 
@@ -28,15 +28,16 @@ export class LoginComponent  {
 
 	onSubmit() {
 		this.displayError = false;
-
-		this.authenticated=this.accountService.authenticate(this.credentials.username, this.credentials.password);
-		if (this.authenticated) {
-			sessionStorage.setItem("username", this.credentials.username);
-			this.loggedInUser = this.credentials.username;
-			this.submitted = true;
-			this.router.navigate(['/events']);
-		} else {
-			this.displayError = true;
-		}
+        this.accountService.getAccount(this.credentials.username).subscribe((account : Account) => {
+            if(account) {
+                this.authenticated = (this.credentials.password === account.password);
+				sessionStorage.setItem("username", this.credentials.username);
+				this.loggedInUser = this.credentials.username;
+				this.submitted = true;
+				this.router.navigate(['/events']);
+            }else {
+				this.displayError = true;
+			}
+		});
 	}
 }
