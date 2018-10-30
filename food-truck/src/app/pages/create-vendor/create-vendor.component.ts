@@ -37,11 +37,19 @@ export class CreateVendorComponent implements OnInit {
               "username" : vendor.username,
               "name" : vendor.name,
               "foodType" : vendor.foodType,
-              "description" : vendor.description,
+              "description" : this.checkEmpty(vendor.description),
               "menu" : vendor.menu
           })
       }
-  })
+    })
+  }
+
+  private checkEmpty(value){
+    var val=""
+    if(value){
+      val = value;
+    }
+    return val;
   }
   get menuItems() {
 		return this.vendorDetailsForm.get('menu') as FormArray;

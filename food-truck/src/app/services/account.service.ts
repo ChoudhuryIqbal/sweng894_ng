@@ -35,9 +35,9 @@ export class AccountService {
                 this._authenticated = (password === account.password);
                 sessionStorage.setItem("username", username);
             }
+            return this._authenticated;
 		});
-    
-        return this._authenticated;
+        
     }
 
     reset() {
