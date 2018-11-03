@@ -18,6 +18,7 @@ export class CreateAccountComponent {
 	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
+	regions = ['Malvern', 'Philadelphia'];
 	loggedInUser : string;
 	public isCollapsed = true;
 
