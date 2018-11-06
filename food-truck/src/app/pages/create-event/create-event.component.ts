@@ -31,7 +31,7 @@ export class CreateEventComponent implements OnInit {
     onSubmit() {
         // TODO: Dynamically pull Vendor, utilize time fields
 
-        const id = this.eventService.events.length;
+        const id = Math.floor(Math.random() * 879798) + 1;
         const event = new Event(
             id, 
             sessionStorage.getItem("username"),
@@ -42,7 +42,7 @@ export class CreateEventComponent implements OnInit {
         );
 
         this.eventService.createEvent(event).then(() => {
-            this.router.navigate(['/events']);
         });
+        this.router.navigate(['/events']);
     }
 }

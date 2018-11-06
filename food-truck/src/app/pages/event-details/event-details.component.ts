@@ -22,14 +22,11 @@ export class EventDetailsComponent implements OnInit {
 
     ngOnInit() {
         this.loggedInUser = sessionStorage.getItem("username");
-        this.vendor = new Vendor('', '', '', '', [])
+        this.vendor = new Vendor('', '', '', '','',  [])
         // const eventObservable: Observable<Event> = this.eventService.getEvent(+this.route.snapshot.params['id']);
-        // const vendorObservable: Observable<Vendor> = this.accountService.getVendorDetails("user2").pipe(
-        //     switchMap((response : Vendor ){
-        //         return this.accountService.getVendorDetails(eventObservable.vendorUsername);
-        //     } )
+        // const vendorObservable: Observable<Vendor> = this.eventService.getEvent(+this.route.snapshot.params['id']).pipe(
+        //     switchMap((event: Event) => this.accountService.getVendorDetails(event.vendorUsername))
         // );
-        
         
         // forkJoin(vendorObservable, eventObservable).subscribe(
         //     ([vendor, event]: [Vendor, Event]) => {
@@ -44,8 +41,6 @@ export class EventDetailsComponent implements OnInit {
                 this.vendor = vendor[0];
                 }
             )
-
         })
     }
-
 }
