@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
     styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
-
+    eventId : number;
     eventForm: FormGroup;
+    event : Event;
 
     constructor(private router: Router, private formBuilder: FormBuilder, private eventService: EventService) { }
 
@@ -26,14 +27,33 @@ export class CreateEventComponent implements OnInit {
             endTime: new FormControl(),
             location: new FormControl(),
         });
+        this.eventId = +sessionStorage.getItem("eventId");
+        sessionStorage.setItem("eventId", "");
+        if(this.eventId){
+            this.eventService.getEvent(+this.eventId).subscribe((event : Event) => {
+                this.event = event[0];
+                this.eventForm.setValue({
+                    "vendorUsername" : this.event.vendorUsername,
+                    "eventDescription" : this.event.saleDescription,
+                    "startDate": this.event.start,
+                    "startTime" : "",//new Date().getTime(),
+                    "endDate" : this.event.end,
+                    "endTime" : "",//new Date().getTime(),
+                    "location" : this.event.address
+                });
+            });
+        }
+        
+        
     }
 
     onSubmit() {
         // TODO: Dynamically pull Vendor, utilize time fields
-
-        const id = Math.floor(Math.random() * 879798) + 1;
+        if(!this.eventId){
+            this.eventId = Math.floor(Math.random() * 879798) + 1;
+        }
         const event = new Event(
-            id, 
+            this.eventId, 
             sessionStorage.getItem("username"),
             this.eventForm.value.startDate,
             this.eventForm.value.endDate,
@@ -42,6 +62,7 @@ export class CreateEventComponent implements OnInit {
         );
 
         this.eventService.createEvent(event).then(() => {
+            // sessionStorage.clear();
         });
         this.router.navigate(['/events']);
     }
