@@ -13,9 +13,10 @@ import { MenuItem } from 'src/app/models/menu-item';
 export class CreateVendorComponent implements OnInit {
   loggedInUser : string;
   vendorDetailsForm: FormGroup;
-  model = new Vendor('', '', '','', []);
+  model = new Vendor('', '', '','', '', []);
   displayError = false;
   newItem = new MenuItem(null, null);
+  regions = ['Malvern', 'Philadelphia'];
   constructor(private fb: FormBuilder, private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
@@ -25,7 +26,8 @@ export class CreateVendorComponent implements OnInit {
       username : [''],
 			name: ['', Validators.maxLength(300)],
 			foodType:['', Validators.maxLength(200)],
-			description: ['', Validators.maxLength(300)],
+      description: ['', Validators.maxLength(300)],
+      region: ['', Validators.required],
 			menu: this.fb.array([
 				this.fb.control('')
 			])
@@ -38,7 +40,8 @@ export class CreateVendorComponent implements OnInit {
               "name" : vendor.name,
               "foodType" : vendor.foodType,
               "description" : this.checkEmpty(vendor.description),
-              "menu" : vendor.menu
+              "region" : this.checkEmpty(vendor.region),
+              "menu" : [vendor.menu]
           })
       }
     })

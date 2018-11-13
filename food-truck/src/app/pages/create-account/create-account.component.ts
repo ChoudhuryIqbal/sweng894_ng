@@ -18,6 +18,7 @@ export class CreateAccountComponent {
 	newItem = new MenuItem(null, null);
 	submitted = false;
 	displayError = false;
+	regions = ['Malvern', 'Philadelphia'];
 	loggedInUser : string;
 	public isCollapsed = true;
 
@@ -36,7 +37,8 @@ export class CreateAccountComponent {
 
 		this.newAccountForm = this.fb.group({
 			username: ['', Validators.required],
-			password: ['', Validators.required]
+			password: ['', Validators.required],
+			region: ['', Validators.required]
 		})
 	}
 
