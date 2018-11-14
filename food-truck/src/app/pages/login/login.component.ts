@@ -29,8 +29,7 @@ export class LoginComponent  {
 	onSubmit() {
 		this.displayError = false;
         this.accountService.getAccount(this.credentials.username).subscribe((account : Account) => {
-            if(account) {
-                this.authenticated = (this.credentials.password === account.password);
+            if(account && (this.credentials.password === account.password)) {
 				sessionStorage.setItem("username", this.credentials.username);
 				this.loggedInUser = this.credentials.username;
 				this.submitted = true;
